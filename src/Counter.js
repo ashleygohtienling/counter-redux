@@ -6,7 +6,8 @@ import React, { Component } from 'react'
 
 class Counter extends Component {
   increment = ()=> {
-    this.props.dispatch({type:"INCREMENT"})
+    this.props.dispatch({type:"INCREMENT"})    // Also injects the dispatch function.
+                                                // onClick, actions are dispatched which gets fed into the reducer and the reducer decides the new state 
     
   };
   decrement = () => {
@@ -30,7 +31,7 @@ class Counter extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({   //Connect takes the entire state and turns that into props to be injected into counter.
     count: state.count
-})
-export default connect(mapStateToProps)(Counter);
+}) 
+export default connect(mapStateToProps)(Counter);   //Via the Provider, Counter function can conenct to redux and pull out data
